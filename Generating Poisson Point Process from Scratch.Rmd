@@ -1,9 +1,8 @@
 ---
 title: "Poisson_Point_Process_Generation"
 output:
-  word_document: default
-  pdf_document: default
-  html_document: default
+  pdf_document:
+  latex_engine: default
 ---
 
 ```{r setup, include=FALSE}
@@ -18,7 +17,7 @@ This is the initial step towards generating the Point Processes from Scratch.
 1. Binomial Point Process
   The Binomial Point process is one of the simplest point process. The number of points is a non-random number n, which doesn't need to be generate as it is a given value. The n points are uniformly and independently distributed in a bounded region. Therefore, all the points can be positioned in a way that they are parallel.
   
-Hence to simualte n points of a binomial point process on a unit square [0,1]\times[0,1],we have to independently sample the x and y coordinates of the points from a uniform distribution on the unit interval [0,1]. In order to sample from a general  w \times h rectangle, we have to we need to multiply the random x and y values by the dimensions of the rectangle w and h. The rectangle can be shifted up or down by adding or substracting x and y values as necessary. The function `runif` is used to generate the uniform random numbers on the open interval (0,1).
+Hence to simualte n points of a binomial point process on a unit square $[0,1]\times[0,1]$, we have to independently sample the x and y coordinates of the points from a uniform distribution on the unit interval [0,1]. In order to sample from a general $w \times h$ rectangle, we have to we need to multiply the random x and y values by the dimensions of the rectangle w and h. The rectangle can be shifted up or down by adding or substracting x and y values as necessary. The function `runif` is used to generate the uniform random numbers on the open interval $(0,1)$.
 
 ```{r}
 n=10; #number of points
@@ -34,11 +33,11 @@ plot(x,y,type = 'p',xlab='x',ylab='y',col='blue')
 ```
 
 2. Homogenous Poisson Point Process on a Rectangle.
-    A Poisson Point Process with an intensity of λ>0 on a bounded rectangular region, where the rectangle [0,w]×[0,h] with dimentions w>0 and h>0 is simulated. The area of the rectangle is A=hw. It is assumed that the bottom left corner of the rectangle is at the origin on the two dimentional space.
+    A Poisson Point Process with an intensity of $\lambda>0$ on a bounded rectangular region, where the rectangle $[0,w]\times [0,h]$ with dimentions w>0 and h>0 is simulated. The area of the rectangle is A=hw. It is assumed that the bottom left corner of the rectangle is at the origin on the two dimentional space.
 
-Number of Points on the rectangular region -  will follow a poisson random variable with the mean λA, as the number of points on the region not only depends on the intensity but also the size of the region. The function `rpois` is used to achieve this task.
+Number of Points on the rectangular region -  will follow a poisson random variable with the mean $\lambda A$, as the number of points on the region not only depends on the intensity but also the size of the region. The function `rpois` is used to achieve this task.
 
-Location of points - The points has to be positioned randomly using the cartesian coordinates. In a homogenous poisson point process, the x and y coordiantes of each point are independant and uniformly distributed. For the rectangle [0,w]×[0,h], the x coordinates are uniformly sampled from the interval [0,w] and y coordinates are uniformly sampled from interval [0,h]. If the bottom left corner of the rectangle is located at the (xo,yo), the random x and y coordinates needs to be shifted by adding xo and yo respectively to them. This is done using the `runif`.
+Location of points - The points has to be positioned randomly using the cartesian coordinates. In a homogenous poisson point process, the x and y coordiantes of each point are independant and uniformly distributed. For the rectangle $[0,w]\times [0,h]$, the x coordinates are uniformly sampled from the interval $[0,w]$ and y coordinates are uniformly sampled from interval $[0,h]$. If the bottom left corner of the rectangle is located at the $(xo,yo)$, the random $x$ and $y$ coordinates needs to be shifted by adding $xo$ and $yo$ respectively to them. This is done using the `runif`.
 
 ```{r}
 #Simulation area parameters
@@ -75,16 +74,16 @@ plot(ppPois) #Plot point pattern object
 
 
 3. Homogenous Poisson Point Process on a Disk.
-    Next, to simulate a Poisson point process with intensity λ>0 on a disk with radius r>0, similar steps to the previous case is followed. 
-Number of points - The number of points of a Poisson point process that falls within a circle of radius r>0 is a poisson random variable with a mean of λA, where the area of the disk is A=πr2. I will use the R function, `rpois`to generate this.
+    Next, to simulate a Poisson point process with intensity $\lambda>0$ on a disk with radius $r>0$, similar steps to the previous case is followed. 
+Number of points - The number of points of a Poisson point process that falls within a circle of radius $r>0$ is a poisson random variable with a mean of $\lambda A$, where the area of the disk is $A=\pi r2$. I will use the R function, `rpois`to generate this.
 
-Locations of points - The points has to be positioned randomly adn uniformly on the disk. As we worked on the cartesian coordinates in the previous case, we have to work on the polar coordinates in this one. If I denote the angular and radial coorsinates by by θ and ρ respectively, in order to generate the random angular (or θ) oordinate values, I will use uniform random variables between 0 and 1. Then I'll multiple all those numbers by 2π, to amke them fall between 0 and 2π
+Locations of points - The points has to be positioned randomly adn uniformly on the disk. As we worked on the cartesian coordinates in the previous case, we have to work on the polar coordinates in this one. If I denote the angular and radial coorsinates by by $\theta$ and $\rho$ respectively, in order to generate the random angular (or $\theta$) oordinate values, I will use uniform random variables between 0 and 1. Then I'll multiple all those numbers by $2\pi$, to amke them fall between 0 and $2\pi$
 
-In order to generate the the random radial (or ρ) values, I will do the same as for the angular variables. But, before directly multiplying by r, I have to take the square root of the random numbers. The square root is taken because the area of a disk is proportional to the radius squared, and not the radius. I then, multiply them by the radius, generating random variables between 0 and r. 
+In order to generate the the random radial (or $\rho$) values, I will do the same as for the angular variables. But, before directly multiplying by r, I have to take the square root of the random numbers. The square root is taken because the area of a disk is proportional to the radius squared, and not the radius. I then, multiply them by the radius, generating random variables between 0 and r. 
 
-These radial random numbers are not uniformly distributed due to the square root, but follows a traingular distribution which is defined with three real-valued parameters a, b and c, and for this case, we can set a=0 and b=c=r. In other words, if we have independent uniform random variables on (0,1), then a random point located uniformly on a disk of radius r has the polar coordinates (r(√U),2πV), where the two random variables are V and U.
+These radial random numbers are not uniformly distributed due to the square root, but follows a traingular distribution which is defined with three real-valued parameters a, b and c, and for this case, we can set a=0 and b=c=r. In other words, if we have independent uniform random variables on (0,1), then a random point located uniformly on a disk of radius r has the polar coordinates $(r(\sqrt U),2\pi V)$, where the two random variables are V and U.
 
-Now that we have generated the polar coordinates, we need to again transform them to cartesian coordinates for the plotting of the graph. This can be done using the trignometry as x=ρcos(θ) and y=ρsin(θ).
+Now that we have generated the polar coordinates, we need to again transform them to cartesian coordinates for the plotting of the graph. This can be done using the trignometry as $x=\rho \cos(\theta)$ and $y=\rho \sin(\theta)$.
 
 Sometimes the plotted points more resemble points on an ellipse than a disk due to the different scaling of the x and y axes. 
 
@@ -131,15 +130,15 @@ plot(ppPois) #Plot point pattern object
 4. Homogenous Poisson Point Process on a Triangle
   As the next step, a  Poisson Point process on a traingle is simulated from scratch using `R`. I will consider a triangle with the corners labeled as A, B and C.
   
-Number of points - The number of points in a homogeneous poisson point process of any shape with an area of A is a Poisson random variable with the mean λA. For the area of a traingle, we can use the Herron's formula that says,
+Number of points - The number of points in a homogeneous poisson point process of any shape with an area of A is a Poisson random variable with the mean $\lambda A$. For the area of a traingle, we can use the Herron's formula that says,
 
 A = s(s-a)(s-b)(s-c) where s = (a+b+c)/2
 
 But, this standard formula can be prone to numerical error if the triangle is very thin or needle-shaped. A more secure and stable expression is
 
-A=1/4(a+(b+c))(c−(a−b))(c+(a−b))(a+(b−c))
+$$A=1/4(a+(b+c))(c-(a-b))(c+(a-b))(a+(b-c))$$
 
-Now to generate Poisson random variables with mean (or parameter)  λA the function `rpois` is used.
+Now to generate Poisson random variables with mean (or parameter)  $\lambda A$ the function `rpois` is used.
 
 Locations of points - When positioning all the geenrated points randomly and uniformly on the triangle, we need two random uniform variables on unit level (0,1). If we take them to be U and V, and the x and y coordinates are named as xA and yA and similary for points B and C, we can get,
 
