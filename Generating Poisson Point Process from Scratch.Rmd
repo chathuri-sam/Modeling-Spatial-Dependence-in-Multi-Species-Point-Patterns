@@ -218,7 +218,7 @@ plot(xx,yy,'p',xlab='x',ylab='y',col='blue',asp = 1)
 
 ```{r}
 #Simulation of PP in a triangle using rejection sampling
-#set.seed(1234)
+set.seed(1234)
 #Simulation area parameters
 xMin <- -4;xMax <- 4
 xDelta <- xMax-xMin #square dimensions
@@ -233,10 +233,10 @@ x <- runif(numbPoints,min = xMin,max = xMax)
 y <- runif(numbPoints,min = xMin,max = xMax) 
 
 #par(pty="s") # Rescale the disk
-plot(x,y,type ='p',xlab='x',ylab='y',col='blue')
+plot(x,y,type ='p',xlab='x',ylab='y',col='blue', asp = 1)
 
-xA=1;xB=0;xC=2 #x values of three points
-yA=2;yB=0;yC=1 #y values of three points
+xs = c(A = 1, B = 0, C = 2) #x values of three points
+ys = c(A = 2, B = 0, C = 1) #y values of three points
  
 #Calculate the equations of the sides
 mAB <- (yB-yA)/(xB-xA)
@@ -249,8 +249,8 @@ mCA <- (yA-yC)/(xA-xC)
 cCA <- yA - (mCA*xA)
 
 #Calculate the center 
-cent_x <- (xA+xB+xC)/3
-cent_y <- (yA+yB+yC)/3
+cent_x <- mean(xs)
+cent_y <- mean(ys)
 
 pointsTr <- data.frame(x,y)
 pointsTr$A <- NULL
@@ -266,28 +266,28 @@ if(cent_y <= ((mBC*cent_x) + cBC)) {B <- 1} else { B <- 2}
 for ( i in 1:nrow(pointsTr)){
   
   if(A==1){
-    if (y[i] <= ((mAB*x[i]) + cAB)){pointsTr$A <- 1} else { pointsTr$A <- 2}
+    if (y[i] <= ((mAB*x[i]) + cAB)){pointsTr$A[i] <- 1} else { pointsTr$A[i] <- 2}
   } else {
-        if (y[i] >= ((mAB*x[i]) + cAB)){pointsTr$A <- 1} else { pointsTr$A <- 2}
+        if (y[i] >= ((mAB*x[i]) + cAB)){pointsTr$A[i] <- 1} else { pointsTr$A[i] <- 2}
   }
   
   if(B==1){
-    if (y[i] <= ((mBC*x[i]) + cBC)){pointsTr$B <- 1} else { pointsTr$B <- 2}
+    if (y[i] <= ((mBC*x[i]) + cBC)){pointsTr$B[i] <- 1} else { pointsTr$B[i] <- 2}
   } else {
-        if (y[i] >= ((mBC*x[i]) + cBC)){pointsTr$B <- 1} else { pointsTr$B <- 2}
+        if (y[i] >= ((mBC*x[i]) + cBC)){pointsTr$B[i] <- 1} else { pointsTr$B[i] <- 2}
   }
   
   if(C==1){
-    if (y[i] <= ((mCA*x[i]) + cCA)){pointsTr$C <- 1} else { pointsTr$C <- 2}
+    if (y[i] <= ((mCA*x[i]) + cCA)){pointsTr$C[i] <- 1} else { pointsTr$C[i] <- 2}
   } else {
-        if (y[i] >= ((mCA*x[i]) + cCA)){pointsTr$C <- 1} else { pointsTr$C <- 2}
+        if (y[i] >= ((mCA*x[i]) + cCA)){pointsTr$C[i] <- 1} else { pointsTr$C[i] <- 2}
       }
   
   i <- i+1
 }
 
 
-PointsTR_sub <- subset(pointsTr,pointsTr$A == A)
+PointsTR_sub <- pointsTr[pointsTr$A == A & pointsTr$B == B & pointsTr$C == C,]
 
 points(PointsTR_sub$x,PointsTR_sub$y, type = 'p',xlab='x',ylab='y',col='red', asp=1)
 
