@@ -303,3 +303,49 @@ lambda=100
 ppPois=rpoispp(lambda, poly = list(x=c(0,1,1),y=c(0,0,1)))
 plot(ppPois) #Plot point pattern object
 ```
+5. Homogeneous Poisson Process in a Sphere
+
+This is done using the similar concept that was used under the homogeneous poisson process in a disk, introducing the third dimension z. First, a Poisson process is generated in a cube and then using the rejection sampling to generate the Poisson Process in a sphere.
+
+```{r}
+library("rgl")
+#Using the Rejection Sampling Method
+set.seed(1234)
+#Simulation area parameters
+xMin <- -2;xMax <- 2; zMax <- 2
+xDelta <- xMax-xMin
+#cube dimensions
+areaTotal <- xDelta^3
+ 
+lambda <- 100 #intensity (mean density) of the Poisson process
+ 
+#Simulate Poisson point process
+numbPoints <- rpois(1,areaTotal*lambda)#Poisson number of points
+
+x <- runif(numbPoints,min = xMin,max = xMax) 
+y <- runif(numbPoints,min = xMin,max = xMax)
+z <- runif(numbPoints,min = xMin,max = xMax)
+
+par(pty="s") # Rescale the disk
+plot3d(x,y,z, type ='p',xlab='x',ylab='y')
+
+#For the sphere
+r=1 #radius of sphere
+xx0=0;yy0=0;zz0=0 #centre of sphere
+ 
+points <- data.frame(x,y,z)
+points$N <- NULL
+
+for (i in 1:nrow(points)){
+  if ((((points$x[i]-xx0)^2)+((points$y[i]-yy0)^2)+ ((points$z[i]-zz0)^2 )) <= r^2) {
+    points$N[i] <- 1} else {points$N[i] <- 2}
+  i = i+1
+}
+
+sp_Points <- subset(points,points$N==1)
+
+plot3d(sp_Points$x,sp_Points$y, sp_Points$z, type = 'p',xlab='x',ylab='y', zlab="z", col='red')
+
+```
+
+
