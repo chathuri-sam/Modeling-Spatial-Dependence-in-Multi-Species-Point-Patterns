@@ -4,3 +4,8 @@ The study of the spatial point patterns in ecology, such as the records of the o
 
 Pre-print can be found in;
 Chathuri Samarasekara, Yan Wang, Ian Flint. A Comparison of Multivariate Log Gaussian Cox Process and Saturated Pairwise Interaction Gibbs Point Process. Authorea. September 13, 2024. DOI: 10.22541/au.172623817.72677555/v1
+
+
+The original Multilogreg package can be accessed from https://github.com/kristianhessellund/Multilogreg.git and has compatibility and dependency issues. 
+
+These have been fixed in https://github.com/IbTJensen/Multilogreg.git and can directly be installed from. 
