@@ -25,8 +25,8 @@ yy <- seq(0,50,length=128)
 #Generate artificial covariate
 covariates <- list(horizontal = function(x, y) x / 100)
 
-F <- covariates$horizontal(pointprocess$x,pointprocess$y)
-cv <- as.matrix(cbind(1,F),ncol=2)
+FC <- covariates$horizontal(pointprocess$x,pointprocess$y)
+cv <- as.matrix(cbind(1,FC),ncol=2)
 
 ncovs <- dim(cv)[2]
 
