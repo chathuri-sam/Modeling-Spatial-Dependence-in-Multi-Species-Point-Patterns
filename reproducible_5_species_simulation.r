@@ -75,7 +75,7 @@ par.est <- list()
 Betahat <- list()
 cv <- list()
 C <- as.im(t(cov),W=owin())
-F <- as.function(as.im(t(cov),W=owin()))
+FC <- as.function(as.im(t(cov),W=owin()))
 
 #Initialize the parameters
 beta1 <- round(runif(5,0.1,0.5),1)
@@ -88,7 +88,7 @@ Beta.init <- cbind(beta1,beta2)
 # Parameter estimation
 for ( i in 1:nsim){
   print(i)
-  cv <- as.matrix(cbind(1,F(X[[i]]$markedprocess$x,X[[i]]$markedprocess$y)),ncol=2)
+  cv <- as.matrix(cbind(1,FC(X[[i]]$markedprocess$x,X[[i]]$markedprocess$y)),ncol=2)
   Betahat[[i]]   <- FirstOrderCCL(X=X[[i]]$markedprocess,Beta0=Beta.init,covariate = C)
   par.est[[i]] <- PenalizedSecondOrderCCL(X=X[[i]]$markedprocess,covariate = cv,Beta = Betahat[[i]]$betahat,Rmax = Rmax,
                                           xibound=xib,sigmabound = sib,phibound=phb, lat = latent,tol=2e-5,lamb = 0)
