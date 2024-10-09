@@ -1,12 +1,32 @@
 remove(list = ls())
+library(devtools)
+
+# Install RandomFields which is not on CRAN anymore
+devtools::install_version("RandomFieldsUtils", dependencies = TRUE, version = "1.2.5", repos = "http://cran.us.r-project.org")
+devtools::install_version("RandomFields", dependencies = TRUE, version = "3.3.14", repos = "http://cran.us.r-project.org")
+
+# Old version of geostatsp that works with old Matrix package
+devtools::install_version("geostatsp", dependencies = TRUE, version = "2.0.0", repos = "http://cran.us.r-project.org")
+
+# Install Multilogreg package
+devtools::install_github("IbTJensen/Multilogreg")
+
+# Install ppjsdm package
+devtools::install_github("iflint1/ppjsdm")
+
 library(ecespa)
 library(ggplot2)
 library(Multilogreg)
+library(ppjsdm)
+library(RandomFields)
 library(spatstat)
 
 RFoptions(install="no")
 
 set.seed(1)
+
+# Load fixed version of simulation code
+source("Sim_MLGCP_adjusted.R")
 
 ###MLGCP model fit for the Swamp follows the method used in Hasselhund et al. (2022)
 ###The following code is adapted by Hasselhund et al. (2022)
@@ -25,8 +45,8 @@ yy <- seq(0,50,length=128)
 #Generate artificial covariate
 covariates <- list(horizontal = function(x, y) x / 100)
 
-F <- covariates$horizontal(pointprocess$x,pointprocess$y)
-cv <- as.matrix(cbind(1,F),ncol=2)
+FC <- covariates$horizontal(pointprocess$x,pointprocess$y)
+cv <- as.matrix(cbind(1,FC),ncol=2)
 
 ncovs <- dim(cv)[2]
 
@@ -131,15 +151,8 @@ samplesmlgcppp <- lapply(X, function(cc) ppp(x = cc$x,
 #Fit for the Swamp data using Saturated Pairwise Interaction Gibbs Point Process (Flint et all (2020))
 library(ppjsdm)
 
-#Define the parameters
-short_range <- cbind(c(1,20,1,5,20),
-                     c(20,3,1,10,9),
-                     c(1,1,5,20,6),
-                     c(5,10,20,1,20),
-                     c(20,9,6,20,1))
-
+#Define the parameters 
 short_range <- matrix(5,5,5)
-
 model <- "square_exponential"
 ndummy <- 5e3
 nthreads <- 4
@@ -166,19 +179,19 @@ fit.pp <- ppjsdm::gibbsm(configuration,
                          saturation = saturation,
                          nthreads = nthreads,
                          dummy_factor = 1)
-plot(fit)
-fit
+plot(fit.pp)
+fit.pp
 
 #Compute summary statistics
-summ <- summary(fit) 
+summ <- summary(fit.pp) 
 summ
-box_plot(fit, summ = summ,which="within",full_names = c(`1`="FX", `2`="NS", `3`="NX",`4`="OT", `5`="TD"))
-plot(potentials(fit, 1, 1))
+box_plot(fit.pp, summ = summ,which="within",full_names = c(`1`="FX", `2`="NS", `3`="NX",`4`="OT", `5`="TD"))
+plot(potentials(fit.pp, 1, 1))
 
 #Simulate samples from the fitted model
 nsim <- 100
 
-samples <- ppjsdm::rgibbs(fit,
+samples <- ppjsdm::rgibbs(fit.pp,
                           steps = 1e4, # Number of steps in the Metropolis-Hastings algorithm
                           nsim = nsim,
                           nthreads = 4,
@@ -192,14 +205,14 @@ samplesppp <- lapply(samples, function(cc) ppp(x = cc$x,
 
 #Conditional intensity predictions
 type <- 5
-plot_papangelou(fit, type = type, show = type, use_log = TRUE, drop_type_from_configuration = TRUE,
+plot_papangelou(fit.pp, type = type, show = type, use_log = TRUE, drop_type_from_configuration = TRUE,
                 window = owin(xrange = c(0,200),yrange = c(0,50)),
                 type_description = "Tree Species",
                 legend_title = "Log-Cond.int.")
 
 #Compute the AUC
 aucs <- sapply(1:5, function(i) {
-  conditional_intensity <- plot_papangelou(fit, type = i, show = i, return_papangelou = TRUE,drop_type_from_configuration = TRUE)
+  conditional_intensity <- plot_papangelou(fit.pp, type = i, show = i, return_papangelou = TRUE,drop_type_from_configuration = TRUE)
   conditional_intensity$v[is.na(conditional_intensity$v)] <- 0.
   conf <- ppp(x = configuration$x,
               y = configuration$y,
@@ -210,6 +223,7 @@ aucs <- sapply(1:5, function(i) {
   auc(X = z, covariate = as.function(conditional_intensity))
 })
 
+aucs
 
 ########################################################################
 ########################################################################

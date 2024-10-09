@@ -2,7 +2,6 @@
 # This version is able to address any given window and multiple covariates. 
 #(whereas Hessellund et al. (2022) used a square window and a single covariate)
 
-library(Multilogreg)
 sim_lgcp_multi_fixed <- function(basecov,covariate,betas,alphas,xis,sigmas,phis, n.window,n.points,beta0s=NULL){
   
   nspecies <- dim(betas)[1]
