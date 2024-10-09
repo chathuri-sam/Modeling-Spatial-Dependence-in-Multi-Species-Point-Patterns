@@ -88,8 +88,8 @@ cov <- outer(xx, yy, FUN = function(x, y) covariates$temperature(x, y))
 # Parameter estimation
 for ( i in 1:nreplications){
   print(i)
-  F <- as.function(as.im(t(cov),W=owin()))
-  cv <- as.matrix(cbind(1,F(samples[[i]]$x,samples[[i]]$y)),ncol=2)
+  FC <- as.function(as.im(t(cov),W=owin()))
+  cv <- as.matrix(cbind(1,FC(samples[[i]]$x,samples[[i]]$y)),ncol=2)
   configuration <- ppp(x = samples[[i]]$x,y = samples[[i]]$y,marks = samples[[i]]$types)
   
   #Choose initial values for Beta coefficients
