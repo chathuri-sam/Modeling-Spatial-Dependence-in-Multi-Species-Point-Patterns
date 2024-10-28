@@ -10,4 +10,4 @@ The original Multilogreg package can be accessed from https://github.com/kristia
 
 These have been fixed in https://github.com/IbTJensen/Multilogreg.git and can directly be installed from. 
 
-Other packages that need to be installed for the Multilogreg package to work can be installed using the code given in the repo.
+The packages (Other than the ones available in CRAN) that needs for the codes to work can be installed using the code "Install required packages" in the repo.
