@@ -9,3 +9,5 @@ Chathuri Samarasekara, Yan Wang, Ian Flint. A Comparison of Multivariate Log Gau
 The original Multilogreg package can be accessed from https://github.com/kristianhessellund/Multilogreg.git and has compatibility and dependency issues. 
 
 These have been fixed in https://github.com/IbTJensen/Multilogreg.git and can directly be installed from. 
+
+Other packages that need to be installed for the Multilogreg package to work can be installed using the code given in the repo.
