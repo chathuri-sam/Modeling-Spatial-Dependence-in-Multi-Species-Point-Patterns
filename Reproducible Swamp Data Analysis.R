@@ -325,8 +325,28 @@ ggplot() +
   theme(legend.position = 'none')  +
   ylab(paste0("K", "FX", "FX")) +  xlab("r")  
 
+#Plot papangelou conditional intensity
+type <- 1
 
-#aE <- alltypes(X=samplesmlgcppp[[1]], Kcross, nsim=100, envelope=TRUE, global=TRUE)
+plot_papangelou(fit, type = type, show = type, use_log = TRUE, drop_type_from_configuration = TRUE,
+                window = owin(xrange = c(0,200),yrange = c(0,50)),
+                type_description = "Tree Species",
+                legend_title = "Log-Cond.int.",
+                base_size = 17,
+                mark_range = 5,
+                colours = "black")
 
+#Compute the AUC
+aucs <- sapply(1:5, function(i) {
+  conditional_intensity <- plot_papangelou(fit, type = i, show = i, return_papangelou = TRUE,drop_type_from_configuration = TRUE)
+  conditional_intensity$v[is.na(conditional_intensity$v)] <- 0.
+  conf <- ppp(x = configuration$x,
+              y = configuration$y,
+              marks = configuration$types,
+              window = owin(xrange = c(0,200),yrange = c(0,50)))
+  z <- subset(conf, conf$marks == i)
+  z <- subset(z, inside.owin(z$x, z$y, conditional_intensity))
+  auc(X = z, covariate = as.function(conditional_intensity))
+})
 
 
