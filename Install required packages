@@ -1,3 +1,6 @@
+remove(list = ls())
+library(devtools)
+
 # Install RandomFields which is not on CRAN anymore
 devtools::install_version("RandomFieldsUtils", dependencies = TRUE, version = "1.2.5", repos = "http://cran.us.r-project.org")
 devtools::install_version("RandomFields", dependencies = TRUE, version = "3.3.14", repos = "http://cran.us.r-project.org")
