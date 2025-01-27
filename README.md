@@ -18,8 +18,7 @@ The spatial analysis of ecological data, such as the observed locations of trees
 For detailed results, please refer to the [pre-print](https://doi.org/10.22541/au.172623817.72677555/v1).
 
 ## **Repository Contents**
-- `code/`: Updated code for simulating from a MLGCP.
-- `src/`: Code to fit MLGCP and SPIGPP models and evaluate their performance.
+- `src/`: Updated code for simulating from a MLGCP and Code to fit MLGCP and SPIGPP models and evaluate their performance.
 - `README.md`: Overview and instructions for using the repository.
 
 ---
