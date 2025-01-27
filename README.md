@@ -15,7 +15,7 @@ The spatial analysis of ecological data, such as the observed locations of trees
 - **MLGCP**: Effective for accounting for complex, unobserved spatial heterogeneities.
 - **SPIGPP**: Better at estimating interactions (even in misspecified cases).
 
-For detailed results, please refer to the [pre-print](https://doi.org/10.22541/au.172623817.72677555/v1) 📄.
+For detailed results, please refer to the [pre-print](https://doi.org/10.22541/au.172623817.72677555/v1).
 
 ## **Repository Contents**
 - `code/`: Updated code for simulating from a MLGCP.
@@ -35,19 +35,24 @@ To install the required packages, run the provided script: [Install required pac
 ## **Usage**
 
 To replicate the analysis:
-1. run the script [sim_MLGCP_adjusted.R](Sim_MLGCP_adjusteed.R). This will enable the use of any given window and multiple covariates when simulating from MLGCP.
-2. Try the [reproducible_MLGCP_Scenarios.R](reproducible_MLGCP_Scenarios.R), then,
-3. [reproducible_PPJSDM scenarios.R](reproducible_PPJSDM%20scenarios.R)
-4. Next try the [reproducible_5_species_simulation.R](reproducible_5_species_simulation.R)
-5. Finally try the real data example on Swamp data Analysis [Reproducible Swamp Data Analysis.R](Reproducible%20Swamp%20Data%20Analysis.R)
+1. run the script [sim_MLGCP_adjusted.R](Sim_MLGCP_adjusteed.R). This will enable the use of any given window and multiple covariates when simulating from MLGCP (The original version of sim_MLGCP in Multilogreg package uses a square window and a single covariate).
+2. Then, simulate bi-variate MLGCP scenarios and fit them using the SPIGPP models. [reproducible_MLGCP_Scenarios.R](reproducible_MLGCP_Scenarios.R), 
+3. Next, simulate bi-variate SPIGPP scenarios and fit them using the MLGCP models. [reproducible_PPJSDM scenarios.R](reproducible_PPJSDM%20scenarios.R)
+   For both of these mis-specified sceanrios, we check the model fit using the empirical and fitted K functions.
+5. Then, replicate the 5 species simulation study in [Hessellund et al. (2022)](https://doi.org/10.1111/rssc.12530) and fit it with SPIGPP models and evaluate the fit using the empirical an fitted K functions [reproducible_5_species_simulation.R](reproducible_5_species_simulation.R)
+6. Finally apply MLGCP and SPIGPP models to the South Carolina Savannah river site study (Good & Whipple (1982)) [Reproducible Swamp Data Analysis.R](Reproducible%20Swamp%20Data%20Analysis.R).
 
-Results include: Predicted K functions for synthetic and real datasets and model performance metrics for clustering and regulation.
+The final results and interpretations of them can be found the paper.
 
 ## Acknowledgments
 
 Original Multilogreg Package: Kristian Hessellund's [Multilogreg package](https://github.com/kristianhessellund/Multilogreg.git) 
 
 Fixed Multilogreg Package: [IbT Jensen's version](https://github.com/IbTJensen/Multilogreg.git)
+
+## References
+1. Good, B. and Whipple, S. (1982). Tree spatial patterns: South Carolina bottomland and swamp forests. Bulletin of the Torrey Botanical Club, 109:529–536.528.
+2. Hessellund, K. B., Xu, G., Guan, Y., and Waagepetersen, R. (2022a). Second-Order Semi-Parametric Inference for Multivariate Log Gaussian Cox Processes. Journal of the Royal Statistical Society Series C: Applied Statistics, 71(1):244–268.531. [https://doi.org/10.1111/rssc.12530](https://doi.org/10.1111/rssc.12530)
 
 ## Pre-print
 Chathuri Samarasekara, Yan Wang, Ian Flint. A Comparison of Multivariate Log Gaussian Cox Process and Saturated Pairwise Interaction Gibbs Point Process. Authorea. September 13, 2024. DOI: 10.22541/au.172623817.72677555/v1
@@ -57,6 +62,3 @@ For any questions or feedback, feel free to reach out:
 Email: [chathuri.samarasekara@rmit.edu.au](mailto:chathuri.samarasekara@rmit.edu.au)
 
 GitHub: [Chathuri Samarasekara](https://github.com/chathuri-sam)
-
-
-
