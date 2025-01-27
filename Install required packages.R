@@ -1,6 +1,6 @@
 remove(list = ls())
 #Install required packages from CRAN
-install.packages(c("spatstat", "ggplot2")) 
+install.packages(c("spatstat", "ggplot2","ecespa")) 
 
 #Install other dependancies, that are not in CRAN
 library(devtools)
