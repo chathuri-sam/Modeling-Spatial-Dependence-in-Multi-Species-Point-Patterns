@@ -1,4 +1,8 @@
 remove(list = ls())
+#Install required packages from CRAN
+install.packages(c("spatstat", "ggplot2")) 
+
+#Install other dependancies, that are not in CRAN
 library(devtools)
 
 # Install RandomFields which is not on CRAN anymore
