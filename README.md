@@ -1,11 +1,28 @@
 # Modelling the Spatial Dependence of Multi-species Point Patterns
 
-The study of the spatial point patterns in ecology, such as the records of the observed locations of trees, shrubs, nests, burrows, or documented animal presence, relies on multivariate point process models. This study aims to compare the efficacy and applicability of two prominent multivariate point process models, the multivariate log Gaussian Cox process (MLGCP) and the Saturated Pairwise Interaction Gibbs Point Process model (SPIGPP), highlighting their respective strengths and weaknesses when prior knowledge of the underlying mechanisms driving the patterns is lacking. Using synthetic and real datasets, we assessed both models based on their predictive accuracy of the empirical K function. Our analysis revealed that both MLGCP and SPIGPP effectively identify and capture mild to moderate clustering and regulations. MLGCP struggles to capture repulsive associations as they intensify. In contrast, SPIGPP can well estimate both the direction and magnitude of interactions even when the model is miss-specified. Both models present unique advantages: MLGCP is particularly effective when there is a need to account for complex, unobserved heterogeneities that vary across space, while SPIGPP is suitable when interactions between points are the primary focus. The choice between these models should be guided by the specific needs of the research question and data characteristics.
+This repository contains the implementation and analysis associated with the study comparing two multivariate point process models: the Multivariate Log Gaussian Cox Process (MLGCP) and the Saturated Pairwise Interaction Gibbs Point Process (SPIGPP). The study evaluates their efficacy in modeling spatial point patterns in ecology, focusing on their ability to handle clustering and regulation under varying conditions.
+
+Overview
+
+The spatial analysis of ecological data, such as the observed locations of trees, nests, or animal sightings, is crucial in understanding environmental patterns. This study compares MLGCP and SPIGPP, highlighting their strengths and weaknesses when prior knowledge of driving mechanisms is limited. Using synthetic and real datasets, we examine their predictive accuracy for the empirical K function and evaluate their performance under different interaction types and intensities.
+
+The findings include:
+
+MLGCP: Well-suited for capturing complex, unobserved spatial heterogeneities but struggles with strong repulsive interactions.
+SPIGPP: Excels in estimating both the direction and magnitude of interactions, even under model misspecification.
+This comparison offers valuable insights for researchers seeking appropriate models for analyzing multi-species point patterns in fields like ecology, epidemiology, and urban studies.
+
+Installation
+
+Dependencies
+Ensure you have R (version 4.3.1 or above) installed on your system. Required R packages include those available in CRAN, along with the Multilogreg package (see below for instructions).
+
+
 
 Pre-print can be found in;
 Chathuri Samarasekara, Yan Wang, Ian Flint. A Comparison of Multivariate Log Gaussian Cox Process and Saturated Pairwise Interaction Gibbs Point Process. Authorea. September 13, 2024. DOI: 10.22541/au.172623817.72677555/v1
 
-
+Please find that 
 The original Multilogreg package can be accessed from https://github.com/kristianhessellund/Multilogreg.git and has compatibility and dependency issues. 
 
 These have been fixed in https://github.com/IbTJensen/Multilogreg.git and can directly be installed from. 
