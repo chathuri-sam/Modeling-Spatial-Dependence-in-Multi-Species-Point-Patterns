@@ -26,14 +26,23 @@ For detailed results, please refer to the [pre-print](https://doi.org/10.22541/a
 
 ## **Installation**
 
-Ensure you have R (version 4.3.1 or above) installed on your system. Required R packages include those available in CRAN, along with the Multilogreg package (see below for instructions).
+1. Ensure you have R (version 4.3.1 or above) installed on your system.
+2. Required R packages include those available in CRAN; 
+ - *spatstat* - version 3.0-6
+ - *ggplot2* - version 3.5.1
+ - *ecespa* - version 1.1-17
+ 
+3. Packages that are not currently avaiable on CRAN;
+  - *RandomFieldsUtils* - version 1.2.5
+  - *RandomFields* - version 3.3.14
 
-1. Install Required R Packages:
-To install the required packages, run the provided script: [Install required packages.R](Install%20required%20packages.R)
+4. Packages available on Github
+  - *PPJSDM* - version 1.0
+  - *Multilogreg* - version 0.1.0
 
-2. The original [Multilogreg package](https://github.com/kristianhessellund/Multilogreg.git) has compatibility and dependency issues. Use the fixed version in [IbTJensen](https://github.com/IbTJensen/Multilogreg.git).
-
----
+Note : The original [Multilogreg package](https://github.com/kristianhessellund/Multilogreg.git) has compatibility and dependency issues. Therefore, use the fixed version in [IbTJensen](https://github.com/IbTJensen/Multilogreg.git).
+ 
+To install all required packages, run the provided script: [Install required packages.R](Install%20required%20packages.R)
 
 ## **Usage**
 
