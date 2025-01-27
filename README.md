@@ -22,6 +22,7 @@ For detailed results, please refer to the [pre-print](https://doi.org/10.22541/a
 - `src/`: Code to fit MLGCP and SPIGPP models and evaluate their performance.
 - `README.md`: Overview and instructions for using the repository.
 
+---
 
 ## **Installation**
 
@@ -31,6 +32,8 @@ Ensure you have R (version 4.3.1 or above) installed on your system. Required R 
 To install the required packages, run the provided script: [Install required packages.R](Install%20required%20packages.R)
 
 2. The original [Multilogreg package](https://github.com/kristianhessellund/Multilogreg.git) has compatibility and dependency issues. Use the fixed version in [IbTJensen](https://github.com/IbTJensen/Multilogreg.git).
+
+---
 
 ## **Usage**
 
