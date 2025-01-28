@@ -1,5 +1,6 @@
 remove(list = ls())
 library(ppjsdm)
+library(spatstat)
 library(RandomFields)
 RFoptions(install="no")
 library(ggplot2)
