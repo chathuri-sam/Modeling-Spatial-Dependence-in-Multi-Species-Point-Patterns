@@ -8,6 +8,9 @@ library(RandomFields)
 RFoptions(install="no")
 library(ggplot2)
 
+# Load the fixed simulation code directly from IbTJensen's Github repo
+source("https://raw.githubusercontent.com/IbTJensen/Multilogreg/refs/heads/main/R/MultiLGCP.R")
+
 #reproducibility
 set.seed(1)
 
@@ -290,7 +293,7 @@ for(i in 1:nspecies) {
     temp <- pi*(r^2)
     Ben[[i]][[j]] <- temp
     
-    nrank <- 10 # This is how many outliers are removed, the larger it is the tighter the band
+    nrank <- 1 # This is how many outliers are removed, the larger it is the tighter the band
     # Spatstat default is 1
     
     #Estimate empirical K functions
