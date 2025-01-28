@@ -1,8 +1,11 @@
+# Clear environment
 remove(list = ls())
-#Install required packages from CRAN
+
+# Install required packages from CRAN
 install.packages(c("spatstat", "ggplot2","ecespa")) 
 
-#Install other dependancies, that are not in CRAN
+# Install other dependencies, that are not in CRAN
+install.packages("devtools") 
 library(devtools)
 
 # Install RandomFields which is not on CRAN anymore
@@ -15,5 +18,5 @@ devtools::install_version("geostatsp", dependencies = TRUE, version = "2.0.0", r
 # Install Multilogreg package
 devtools::install_github("IbTJensen/Multilogreg")
 
-#Install ppjsdm package 
+# Install ppjsdm package 
 devtools::install_github("iflint1/ppjsdm")

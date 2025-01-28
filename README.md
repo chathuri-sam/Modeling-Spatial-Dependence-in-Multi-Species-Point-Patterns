@@ -10,7 +10,9 @@ The study evaluates their efficacy in modeling spatial point patterns in ecology
 
 ## **Overview**
 
-The spatial analysis of ecological data, such as the observed locations of trees, nests, or animal sightings, is crucial in understanding environmental patterns. This study compares MLGCP and SPIGPP, highlighting their strengths and weaknesses when prior knowledge of driving mechanisms is limited. Using synthetic and real datasets, we examine their predictive accuracy for the empirical K function and evaluate their performance under different interaction types and intensities.
+The spatial analysis of ecological data, such as the observed locations of trees, nests, or animal sightings, is crucial in understanding environmental patterns. This study compares MLGCP and SPIGPP, highlighting their strengths and weaknesses when prior knowledge of driving mechanisms is limited. Using synthetic and real datasets, we examine their predictive accuracy measured through the empirical K function and evaluate their performance under varying interaction structures.
+
+Summary:
 
 - **MLGCP**: Effective for accounting for complex, unobserved spatial heterogeneities.
 - **SPIGPP**: Better at estimating interactions (even in misspecified cases).
