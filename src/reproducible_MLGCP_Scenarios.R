@@ -1,9 +1,11 @@
 remove(list = ls())
 library(ppjsdm)
-library(Multilogreg)
 library(RandomFields)
 RFoptions(install="no")
 library(ggplot2)
+
+# Load the fixed simulation code directly from IbTJensen's Github repo
+source("https://raw.githubusercontent.com/IbTJensen/Multilogreg/refs/heads/main/R/MultiLGCP.R")
 
 # Reproducibility
 set.seed(1)
@@ -152,7 +154,7 @@ en <- vector(mode = "list", length = nspecies)
 for(i in 1:nspecies) {
   mlen[[i]] <- vector(mode = "list", length = i)
   en[[i]] <- vector(mode = "list", length = i)
-  for(j in 1:ntypes) {
+  for(j in 1:nspecies) {
     #empirical MLGCP K functions
     temp <- lapply(samplesdatappp, function(cc) {   
       z <- Kcross(cc, i = i, j = j, correction = "best", r = r) # Choose best border correction, other options irrelevant

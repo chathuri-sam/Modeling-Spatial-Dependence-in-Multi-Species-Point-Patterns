@@ -12,11 +12,12 @@ sim_lgcp_multi_fixed <- function(basecov,covariate,betas,alphas,xis,sigmas,phis,
   
   ###If all intercepts are given, then use given beta0s; otherwise calculate beta0s so that
   ### average number of points are n.points[i] for process X_i
+  logint <- basecov
   
   if(is.null(beta0s)){
     beta0s <- numeric()
     for(i in 1:nspecies){
-      logint <- basecov
+      
       for(j in seq_len(ncol(betas))) {
         beta0s[i] <- log(n.points[i]/area.owin(n.window))-mean(c(as.matrix(covariate[[j]]*betas[i,j]+logint)))
         logint <- logint + covariate[[j]]*betas[i,j]

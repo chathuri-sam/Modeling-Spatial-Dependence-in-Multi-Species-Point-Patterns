@@ -20,20 +20,20 @@ Summary:
 For detailed results, please refer to the [pre-print](https://doi.org/10.22541/au.172623817.72677555/v1).
 
 ## **Repository Contents**
-- `src/`: Updated code for simulating from a MLGCP and Code to fit MLGCP and SPIGPP models and evaluate their performance.
+- `src/`: Updated code for simulating from a MLGCP and Code to fit MLGCP and SPIGPP models and evaluating their performance.
 - `README.md`: Overview and instructions for using the repository.
 
 ---
 
 ## **Installation**
 
-1. Ensure you have R (version 4.3.1 or above) installed on your system.
+1. Ensure you have R installed on your system. We have gotten the code to work on R 4.2.1 (linux) and R 4.3.1 (Windows) but the installation of `RandomFieldsUtils` fails on R 4.4.2 (linux).
 2. Required R packages include those available in CRAN; 
  - *spatstat* - version 3.0-6
  - *ggplot2* - version 3.5.1
  - *ecespa* - version 1.1-17
  
-3. Packages that are not currently avaiable on CRAN;
+3. Packages that are not currently available on CRAN;
   - *RandomFieldsUtils* - version 1.2.5
   - *RandomFields* - version 3.3.14
 
@@ -41,19 +41,18 @@ For detailed results, please refer to the [pre-print](https://doi.org/10.22541/a
   - *PPJSDM* - version 1.0
   - *Multilogreg* - version 0.1.0
 
-Note : The original [Multilogreg package](https://github.com/kristianhessellund/Multilogreg.git) has compatibility and dependency issues. Therefore, use the fixed version in [IbTJensen](https://github.com/IbTJensen/Multilogreg.git).
+Note : The original [Multilogreg package](https://github.com/kristianhessellund/Multilogreg.git) does not work since a recent `spatstat` update. Therefore, we use the fixed version from [IbTJensen](https://github.com/IbTJensen/Multilogreg.git). However, we encountered some linking issues when installing the package, so in some places we refer to the appropriate functions in that repository directly.
  
-To install all required packages, run the provided script: [Install required packages.R](Install%20required%20packages.R)
+To install all required packages, run the provided script: [Install required packages.R](src/Install%20required%20packages.R)
 
 ## **Usage**
 
 To replicate the analysis:
-1. run the script [sim_MLGCP_adjusted.R](Sim_MLGCP_adjusteed.R). This will enable the use of any given window and multiple covariates when simulating from MLGCP (The original version of sim_MLGCP in Multilogreg package uses a square window and a single covariate).
-2. Then, simulate bi-variate MLGCP scenarios and fit them using the SPIGPP models. [reproducible_MLGCP_Scenarios.R](reproducible_MLGCP_Scenarios.R), 
-3. Next, simulate bi-variate SPIGPP scenarios and fit them using the MLGCP models. [reproducible_PPJSDM scenarios.R](reproducible_PPJSDM%20scenarios.R)
+1. Simulate bi-variate MLGCP scenarios and fit them using the SPIGPP models. [reproducible_MLGCP_Scenarios.R](src/reproducible_MLGCP_Scenarios.R), 
+2. Next, simulate bi-variate SPIGPP scenarios and fit them using the MLGCP models. [reproducible_PPJSDM scenarios.R](src/reproducible_PPJSDM%20scenarios.R)
    For both of these mis-specified sceanrios, we check the model fit using the empirical and fitted K functions.
-5. Then, replicate the 5 species simulation study in [Hessellund et al. (2022)](https://doi.org/10.1111/rssc.12530) and fit it with SPIGPP models and evaluate the fit using the empirical an fitted K functions [reproducible_5_species_simulation.R](reproducible_5_species_simulation.R)
-6. Finally apply MLGCP and SPIGPP models to the South Carolina Savannah river site study (Good & Whipple (1982)) [Reproducible Swamp Data Analysis.R](Reproducible%20Swamp%20Data%20Analysis.R).
+3. Then, replicate the 5 species simulation study in [Hessellund et al. (2022)](https://doi.org/10.1111/rssc.12530) and fit it with SPIGPP models and evaluate the fit using the empirical an fitted K functions [reproducible_5_species_simulation.R](src/reproducible_5_species_simulation.R)
+4. Finally apply MLGCP and SPIGPP models to the South Carolina Savannah river site study (Good & Whipple (1982)) [Reproducible Swamp Data Analysis.R](src/Reproducible%20Swamp%20Data%20Analysis.R).
 
 The final results and interpretations of them can be found the paper.
 
