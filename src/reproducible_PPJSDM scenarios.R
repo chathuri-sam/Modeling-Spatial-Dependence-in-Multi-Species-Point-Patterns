@@ -6,9 +6,6 @@ RFoptions(install="no")
 library(Multilogreg)
 library(ggplot2)
 
-# Load the fixed simulation code directly from IbTJensen's Github repo
-source("https://raw.githubusercontent.com/IbTJensen/Multilogreg/refs/heads/main/R/MultiLGCP.R")
-
 #reproducibility
 seed <- 1
 set.seed(seed)

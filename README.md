@@ -27,17 +27,15 @@ For detailed results, please refer to the [pre-print](https://doi.org/10.22541/a
 
 ## **Installation**
 
-1. Ensure you have R installed on your system. We have gotten the code to work on R 4.2.1 (linux) and R 4.3.1 (Windows) but the installation of `RandomFieldsUtils` fails on R 4.4.2 (linux).
+1. Ensure you have R installed on your system. We have gotten the code to work on R 4.2.1 (linux), R 4.4.2 (linux) and R 4.3.1 (Windows).
 2. Required R packages include those available in CRAN; 
  - *spatstat* - version 3.0-6
  - *ggplot2* - version 3.5.1
  - *ecespa* - version 1.1-17
- 
-3. Packages that are not currently available on CRAN;
-  - *RandomFieldsUtils* - version 1.2.5
-  - *RandomFields* - version 3.3.14
 
-4. Packages available on Github
+3. Packages available on Github
+  - *RandomFieldsUtils* (fixed) - version 1.2.5
+  - *RandomFields* (fixed) - version 3.3.14
   - *PPJSDM* - version 1.0
   - *Multilogreg* - version 0.1.0
 

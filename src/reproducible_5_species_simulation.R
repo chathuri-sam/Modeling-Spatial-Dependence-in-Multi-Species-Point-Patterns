@@ -8,9 +8,6 @@ library(RandomFields)
 RFoptions(install="no")
 library(ggplot2)
 
-# Load the fixed simulation code directly from IbTJensen's Github repo
-source("https://raw.githubusercontent.com/IbTJensen/Multilogreg/refs/heads/main/R/MultiLGCP.R")
-
 #reproducibility
 set.seed(1)
 
