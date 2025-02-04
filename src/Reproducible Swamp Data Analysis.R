@@ -9,9 +9,6 @@ RFoptions(install="no")
 
 set.seed(1)
 
-# Load fixed version of simulation code
-source("src/Sim_MLGCP_adjusted.R")
-
 ###MLGCP model fit for the Swamp follows the method used in Hasselhund et al. (2022)
 ###The following code is adapted by Hasselhund et al. (2022)
 ### First order analysis ###
