@@ -27,7 +27,7 @@ For detailed results, please refer to the [pre-print](https://doi.org/10.22541/a
 
 ## **Installation**
 
-1. Ensure you have R installed on your system. We have gotten the code to work on R 4.2.1 (linux), R 4.4.2 (linux) and R 4.3.1 (Windows).
+1. Ensure you have R installed on your system. We have gotten the code to work on R 4.2.1 (linux), R 4.4.2 (linux) and R 4.4.2 (Windows).
 2. Required R packages include those available in CRAN; 
  - *spatstat* - version 3.0-6
  - *ggplot2* - version 3.5.1
@@ -39,7 +39,7 @@ For detailed results, please refer to the [pre-print](https://doi.org/10.22541/a
   - *PPJSDM* - version 1.0
   - *Multilogreg* - version 0.1.0
 
-Note : The original [Multilogreg package](https://github.com/kristianhessellund/Multilogreg.git) does not work since a recent `spatstat` update. Therefore, we use the fixed version from [IbTJensen](https://github.com/IbTJensen/Multilogreg.git). However, we encountered some linking issues when installing the package, so in some places we refer to the appropriate functions in that repository directly.
+Note : The original [Multilogreg package](https://github.com/kristianhessellund/Multilogreg.git) does not work since a recent `spatstat` update. Therefore, we use the fixed version in [Multilogreg_updated](https://github.com/chathuri-sam/Multilogreg_updated.git). 
  
 To install all required packages, run the provided script: [Install required packages.R](src/Install%20required%20packages.R)
 
@@ -57,8 +57,6 @@ The final results and interpretations of them can be found the paper.
 ## Acknowledgments
 
 Original Multilogreg Package: Kristian Hessellund's [Multilogreg package](https://github.com/kristianhessellund/Multilogreg.git) 
-
-Fixed Multilogreg Package: [IbT Jensen's version](https://github.com/IbTJensen/Multilogreg.git)
 
 ## References
 1. Good, B. and Whipple, S. (1982). Tree spatial patterns: South Carolina bottomland and swamp forests. Bulletin of the Torrey Botanical Club, 109:529–536.528.
