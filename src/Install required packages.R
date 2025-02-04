@@ -18,7 +18,7 @@ devtools::install_github("iflint1/RandomFields")
 devtools::install_version("geostatsp", dependencies = TRUE, version = "2.0.0", repos = "http://cran.us.r-project.org")
 
 # Install Multilogreg package
-devtools::install_github("iflint1/Multilogreg")
+devtools::install_github("chathuri-sam/Multilogreg_updated")
 
 # Install ppjsdm package 
 devtools::install_github("iflint1/ppjsdm")
