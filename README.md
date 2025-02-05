@@ -29,15 +29,15 @@ For detailed results, please refer to the [pre-print](https://doi.org/10.22541/a
 
 1. Ensure that R is installed on your system. The code has been tested on R 4.4.2 and confirmed to work on Linux, Windows, and macOS.
 2. Required R packages include those available in CRAN; 
- - *spatstat* - version 3.0-6
- - *ggplot2* - version 3.5.1
- - *ecespa* - version 1.1-17
+ - `spatstat` - version 3.0-6
+ - `ggplot2` - version 3.5.1
+ - `ecespa` - version 1.1-17
 
 3. Packages available on Github
-  - *RandomFieldsUtils* (fixed) - version 1.2.5
-  - *RandomFields* (fixed) - version 3.3.14
-  - *PPJSDM* - version 1.0
-  - *Multilogreg* (fixed) - version 0.1.0
+  - `RandomFieldsUtils` (fixed) - version 1.2.5
+  - `RandomFields` (fixed) - version 3.3.14
+  - `PPJSDM` - version 1.0
+  - `Multilogreg` (fixed) - version 0.1.0
 
 Note : The original [Multilogreg package](https://github.com/kristianhessellund/Multilogreg.git) does not work since a recent `spatstat` update. Therefore, we use the fixed version in [Multilogreg_updated](https://github.com/chathuri-sam/Multilogreg_updated.git). 
  
