@@ -1,33 +1,33 @@
-# **Modelling the Spatial Dependence of Multi-species Point Patterns**
+# **Modeling Spatial Dependence in Multi-Species Point Patterns**
 
 This repository contains the implementation and analysis associated with the study comparing two multivariate point process models: 
 - **Multivariate Log Gaussian Cox Process (MLGCP)**
 -  **Saturated Pairwise Interaction Gibbs Point Process (SPIGPP)**
 
-The study evaluates their efficacy in modeling spatial point patterns in ecology, focusing on their ability to handle clustering and regulation under varying conditions.
+The study evaluates their efficacy in modeling spatial point patterns in ecology, focusing on how well they capture clustering and interaction effects under different conditions.
 
 ---
 
 ## **Overview**
 
-The spatial analysis of ecological data, such as the observed locations of trees, nests, or animal sightings, is crucial in understanding environmental patterns. This study compares MLGCP and SPIGPP, highlighting their strengths and weaknesses when prior knowledge of driving mechanisms is limited. Using synthetic and real datasets, we examine their predictive accuracy measured through the empirical K function and evaluate their performance under varying interaction structures.
+The spatial analysis of ecological data, such as the observed locations of trees, nests, or animal sightings, is crucial in understanding environmental patterns. This study compares MLGCP and SPIGPP, highlighting their respective strengths and limitations, particularly in cases where the underlying drivers of spatial patterns are unknown. Using synthetic and real datasets, we examine their predictive accuracy assessed using the empirical K function to quantify spatial dependence and evaluate their performance under varying interaction structures.
 
 Summary:
 
 - **MLGCP**: Effective for accounting for complex, unobserved spatial heterogeneities.
-- **SPIGPP**: Better at estimating interactions (even in misspecified cases).
+- **SPIGPP**: More effective at detecting interactions, even when the true underlying model is misspecified.
 
 For detailed results, please refer to the [pre-print](https://doi.org/10.22541/au.172623817.72677555/v1).
 
 ## **Repository Contents**
-- `src/`: Updated code for simulating from a MLGCP and Code to fit MLGCP and SPIGPP models and evaluating their performance.
+- `src/`: Code for fitting MLGCP and SPIGPP models in various scenarios, evaluating their performance, and analyzing real data to compare the two models.
 - `README.md`: Overview and instructions for using the repository.
 
 ---
 
 ## **Installation**
 
-1. Ensure you have R installed on your system. We have gotten the code to work on R 4.2.1 (linux), R 4.4.2 (linux) and R 4.4.2 (Windows).
+1. Ensure that R is installed on your system. The code has been tested on R 4.4.2 and confirmed to work on Linux, Windows, and macOS.
 2. Required R packages include those available in CRAN; 
  - *spatstat* - version 3.0-6
  - *ggplot2* - version 3.5.1
@@ -37,7 +37,7 @@ For detailed results, please refer to the [pre-print](https://doi.org/10.22541/a
   - *RandomFieldsUtils* (fixed) - version 1.2.5
   - *RandomFields* (fixed) - version 3.3.14
   - *PPJSDM* - version 1.0
-  - *Multilogreg* - version 0.1.0
+  - *Multilogreg* (fixed) - version 0.1.0
 
 Note : The original [Multilogreg package](https://github.com/kristianhessellund/Multilogreg.git) does not work since a recent `spatstat` update. Therefore, we use the fixed version in [Multilogreg_updated](https://github.com/chathuri-sam/Multilogreg_updated.git). 
  
@@ -45,14 +45,14 @@ To install all required packages, run the provided script: [Install required pac
 
 ## **Usage**
 
-To replicate the analysis:
+Follow these steps to reproduce the analysis:
 1. Simulate bi-variate MLGCP scenarios and fit them using the SPIGPP models. [reproducible_MLGCP_Scenarios.R](src/reproducible_MLGCP_Scenarios.R), 
 2. Next, simulate bi-variate SPIGPP scenarios and fit them using the MLGCP models. [reproducible_PPJSDM scenarios.R](src/reproducible_PPJSDM%20scenarios.R)
-   For both of these mis-specified sceanrios, we check the model fit using the empirical and fitted K functions.
-3. Then, replicate the 5 species simulation study in [Hessellund et al. (2022)](https://doi.org/10.1111/rssc.12530) and fit it with SPIGPP models and evaluate the fit using the empirical an fitted K functions [reproducible_5_species_simulation.R](src/reproducible_5_species_simulation.R)
-4. Finally apply MLGCP and SPIGPP models to the South Carolina Savannah river site study (Good & Whipple (1982)) [Reproducible Swamp Data Analysis.R](src/Reproducible%20Swamp%20Data%20Analysis.R).
+   For both of these mis-specified scenarios, we check the model fit by comparing the empirical and fitted K functions.
+3. Next, reproduce the five-species simulation study from [Hessellund et al. (2022)](https://doi.org/10.1111/rssc.12530) and fit it with MLGCP and SPIGPP models. Then evaluate the fit using the empirical an fitted K functions [reproducible_5_species_simulation.R](src/reproducible_5_species_simulation.R)
+4. Finally, apply both models to the South Carolina Savannah River site dataset from Good & Whipple (1982) using [Reproducible Swamp Data Analysis.R](src/Reproducible%20Swamp%20Data%20Analysis.R).
 
-The final results and interpretations of them can be found the paper.
+Detailed results and interpretations are available in the paper.
 
 ## Acknowledgments
 
