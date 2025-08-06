@@ -17,7 +17,7 @@ Summary:
 - **MLGCP**: Effective for accounting for complex, unobserved spatial heterogeneities.
 - **SPIGPP**: More effective at detecting interactions, even when the true underlying model is misspecified.
 
-For detailed results, please refer to the [pre-print](https://doi.org/10.22541/au.172623817.72677555/v1).
+For detailed results, please refer the [publication](https://doi.org/10.1002/ece3.71066).
 
 ## **Repository Contents**
 - `src/`: Code for fitting MLGCP and SPIGPP models in various scenarios, evaluating their performance, and analyzing real data to compare the two models.
@@ -62,9 +62,8 @@ Original Multilogreg Package: Kristian Hessellund's [Multilogreg package](https:
 1. Good, B. and Whipple, S. (1982). Tree spatial patterns: South Carolina bottomland and swamp forests. Bulletin of the Torrey Botanical Club, 109:529–536.528.
 2. Hessellund, K. B., Xu, G., Guan, Y., and Waagepetersen, R. (2022a). Second-Order Semi-Parametric Inference for Multivariate Log Gaussian Cox Processes. Journal of the Royal Statistical Society Series C: Applied Statistics, 71(1):244–268.531. [https://doi.org/10.1111/rssc.12530](https://doi.org/10.1111/rssc.12530)
 
-## Pre-print
-Chathuri Samarasekara, Yan Wang, Ian Flint. A Comparison of Multivariate Log Gaussian Cox Process and Saturated Pairwise Interaction Gibbs Point Process. Authorea. September 13, 2024. DOI: 10.22541/au.172623817.72677555/v1
-
+## Publication
+C. L. Samarasekara, I. Flint, Y. Wang (2025), Modelling the Spatial Dependence of Multi Species Point Patterns. Ecology and Evolution.15(3) [ https://doi.org/10.1002/ece3.71066](https://doi.org/10.1002/ece3.71066)
 For any questions or feedback, feel free to reach out:
 
 Email: [chathuri.samarasekara@rmit.edu.au](mailto:chathuri.samarasekara@rmit.edu.au)
